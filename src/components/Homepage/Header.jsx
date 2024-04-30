@@ -1,15 +1,17 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
-import { convocloud } from "../assets";
-import { navigation } from "../constants";
+import { convocloud } from "../../assets";
+import { navigation } from "../../constants";
 import Button from "./Button";
-import MenuSvg from "../assets/svg/MenuSvg";
-import { HamburgerMenu } from "./design/Header";
+import MenuSvg from "../../assets/svg/MenuSvg";
+import { HamburgerMenu } from "../design/Header";
 import { useState } from "react";
 
 const Header = () => {
   const pathname = useLocation();
+
+  let navigate = useNavigate();
 
   const [openNavigation, setOpenNavigation] = useState(false);
 
@@ -74,7 +76,11 @@ const Header = () => {
         >
           New Account
         </a>
-        <Button className="hidden lg:flex" href="#login">
+        <Button
+          className="hidden lg:flex"
+          //href="#login"
+          onClick={() => navigate("/admin")}
+        >
           Sign In
         </Button>
 
